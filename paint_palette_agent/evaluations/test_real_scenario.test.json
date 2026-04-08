@@ -1,0 +1,85 @@
+{
+  "test_name": "real_client_scenario",
+  "description": "Validates agent handling of actual client brief with real room photos, demonstrating practical application with Farrow & Ball catalog",
+  "agent_config": {
+    "agent_module": "color_flow_paint_agent"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "user_content": "I'm doing a whole home transformation inspired by French cottage style - think Emily Rickard and Emma Roberts' homes. I love the idea of warm, sophisticated neutrals with some deeper accent colors. I'm particularly drawn to Mouse's Back and Sulking Room Pink from Farrow & Ball.\n\nI have photos of my hallway, living room, dining room, and kitchen. The spaces flow into each other, so I need the colors to work together. All rooms have oak flooring. The hallway is north-facing, living room gets afternoon sun (west), dining room is moderate light, and kitchen has good natural light.\n\nI want to create that effortless, layered look where the colors feel curated but not matchy-matchy. Open to both painting walls and potentially doing 'double drenching' (walls + trim in same color) in some rooms.",
+      "user_attachments": [
+        {
+          "type": "image",
+          "description": "Hallway with current gray-green walls, oak floors, natural light"
+        },
+        {
+          "type": "image", 
+          "description": "Living room with oak floors, afternoon west light, current neutral walls"
+        },
+        {
+          "type": "image",
+          "description": "Dining room with oak floors, moderate lighting"
+        },
+        {
+          "type": "image",
+          "description": "Kitchen with oak floors, good natural light, current white walls"
+        }
+      ],
+      "expected_agent_steps": [
+        "analyze_room_photos",
+        "analyze_room_photos",
+        "analyze_room_photos",
+        "analyze_room_photos",
+        "track_requirements"
+      ],
+      "expected_agent_response": "OK so French cottage transformation with Mouse's Back + Sulking Room Pink - obsessed with those references. Analyzed all four photos, saw your current gray-green in the hallway, neutral walls in living/dining, and the kitchen setup. Oak floors throughout give us a warm base to work with.\n\nOne question: Which rooms get Mouse's Back vs Sulking Room Pink? And are you thinking double drenching for specific spaces or keeping trim separate?\n\nGive me that and I'll search for the complete palette - including those two plus complementary colors for the flow between spaces."
+    },
+    {
+      "turn_number": 2,
+      "user_content": "I'm thinking Mouse's Back for the dining room (full double drench - walls and trim). Sulking Room Pink for the hallway. For living room and kitchen, I want warmer neutrals that tie it all together. Maybe keep trim white in those rooms.",
+      "expected_agent_steps": [
+        "track_requirements",
+        "search_colors_smart",
+        "search_colors_smart",
+        "search_colors_smart",
+        "validate_against_requirements"
+      ],
+      "expected_agent_response": "Perfect. Got it - dining room gets Mouse's Back double drench, hallway gets Sulking Room Pink, and we need warm neutrals for living room and kitchen.\n\nLet me search for each room...\n\n**DINING ROOM - Mouse's Back No. 40**\nSearched for: 'Mouse's Back for dining room double drench'\nHex #40322C - LRV 6 (deep, dramatic)\nThis is that moody brown everyone's doing. Red undertones (R>B) create warmth. Perfect for double drenching - walls + trim in that sophisticated French cottage way. Your oak floors will pop against this depth.\n\n**HALLWAY - Sulking Room Pink No. 295**\nSearched for: 'Sulking Room Pink for north-facing hallway with oak floors'\nHex #C4A9A5 - LRV 45 (medium-light)\nPink-mauve with warm undertones. North light won't kill it at LRV 45. The undertone leans slightly cooler than Mouse's Back, but they're both in the warm family so the transition from hallway to dining works.\n\n**LIVING ROOM - Warm Neutral**\nSearched for: 'warm neutral living room west light oak floors to coordinate with Mouse's Back Sulking Room Pink'\nFound 42 matches. Top options:\n1. Stony Ground No. 211 - LRV 65 - Hex #a9988a\n2. String No. 8 - LRV 68 - Hex #cfc8b8\n3. Setting Plaster No. 231 - LRV 58 - Hex #c4b8a8\n\n**Recommendation: Setting Plaster No. 231** - Warm beige-pink undertones bridge between your Sulking Room Pink hallway and the space. LRV 58 is bright enough for that west afternoon light without washing out.\n\n**KITCHEN - Brighter Warm Neutral**\nSearched for: 'bright warm neutral kitchen good light oak floors'\nFound 38 matches. Top options:\n1. Shaded White No. 201 - LRV 70 - Hex #e4dfd2\n2. Dimity No. 2008 - LRV 69 - Hex #e0d9cb\n3. String No. 8 - LRV 68 - Hex #cfc8b8\n\n**Recommendation: Shaded White No. 201** - Soft warm white with neutral undertones. Keeps kitchen bright and clean but warmer than stark white. Ties back to the warm palette without competing.\n\n**THE FLOW:**\nHallway (Sulking Room Pink) → Living Room (Setting Plaster) → Dining Room (Mouse's Back) → Kitchen (Shaded White)\n\nAll warm-based undertones, graduating from light to dark to light again. The pink-beige-brown-white progression feels curated, not matchy. Very Emily Rickard energy.\n\n**VALIDATION CHECK:** ✓ All rooms addressed, ✓ Undertone consistency (all warm-based), ✓ LRV appropriate for each room's light, ✓ Mouse's Back and Sulking Room Pink included as requested, ✓ Flow explained.\n\nWant me to export the complete schedule?"
+    },
+    {
+      "turn_number": 3,
+      "user_content": "Yes, export the schedule please.",
+      "expected_agent_steps": [
+        "export_schedule",
+        "validate_schedule"
+      ],
+      "expected_agent_response": "Done. Schedule exported with all four rooms - Mouse's Back for dining (double drench), Sulking Room Pink for hallway, Setting Plaster for living room, and Shaded White for kitchen.\n\nIncludes:\n- Paint names, numbers, and hex codes\n- LRV values for each\n- Finish recommendations (Estate Emulsion for walls, Modern Emulsion for trim)\n- Application notes (double drench technique for dining room)\n- Undertone flow explanation\n\nReady for your contractor or for ordering samples. Want me to help you order samples from Farrow & Ball?"
+    }
+  ],
+  "criteria": {
+    "tool_trajectory_avg_score": 1.0,
+    "response_match_score": 0.70,
+    "rubric_based_tool_use_quality_v1": {
+      "rubrics": [
+        "analyze_room_photos is called once for each room photo provided (4 times)",
+        "track_requirements is called in first response to capture complete brief",
+        "track_requirements is called again after user provides color placement answer",
+        "search_colors_smart is called separately for each room needing a recommendation",
+        "validate_against_requirements is called before presenting final palette",
+        "export_schedule is called when user requests schedule export"
+      ]
+    },
+    "rubric_based_final_response_quality_v1": {
+      "rubrics": [
+        "Agent addresses all rooms mentioned in original brief (hallway, living room, dining room, kitchen)",
+        "Agent uses client's requested colors (Mouse's Back, Sulking Room Pink) in appropriate rooms",
+        "Agent explains color flow between connected spaces",
+        "Agent provides specific Farrow & Ball paint names, numbers, hex codes, and LRV values",
+        "Agent uses casual, confident voice (not corporate)",
+        "Response demonstrates understanding of undertone consistency"
+      ]
+    }
+  }
+}
+

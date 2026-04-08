@@ -1,0 +1,40 @@
+{
+  "test_name": "simple_multi_room_consultation",
+  "description": "Validates that the agent properly analyzes multiple rooms and provides coordinated color recommendations",
+  "agent_config": {
+    "agent_module": "color_flow_paint_agent"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "user_content": "I need help with paint colors for my hallway and living room. The hallway is north-facing with oak floors, and I want something warm and inviting. I'm attaching photos.",
+      "user_attachments": [
+        {
+          "type": "image",
+          "description": "Hallway with oak floors"
+        },
+        {
+          "type": "image",
+          "description": "Living room with north-facing windows"
+        }
+      ],
+      "expected_agent_steps": [
+        "analyze_room_photos",
+        "track_requirements"
+      ]
+    },
+    {
+      "turn_number": 2,
+      "user_content": "I'd like warm neutrals, preferably LRV 60+. I want the rooms to flow together since they're connected.",
+      "expected_agent_steps": [
+        "track_requirements",
+        "search_colors_smart"
+      ]
+    }
+  ],
+  "criteria": {
+    "tool_trajectory_avg_score": 0.7,
+    "response_match_score": 0.5
+  }
+}
+

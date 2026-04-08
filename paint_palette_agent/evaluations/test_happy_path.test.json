@@ -1,0 +1,38 @@
+{
+  "test_name": "happy_path_consultation",
+  "description": "Validates the complete paint consultation workflow executes correctly from initial intake through final recommendation",
+  "agent_config": {
+    "agent_module": "color_flow_paint_agent"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "user_content": "I need help picking a paint color for my hallway. It's a north-facing space with oak floors, and I want something warm and inviting but not too dark. I'm thinking a warm neutral. Here's a photo of the space.",
+      "user_attachments": [
+        {
+          "type": "image",
+          "description": "Hallway photo showing current gray-green walls, oak flooring, and natural light from north-facing window"
+        }
+      ],
+      "expected_agent_steps": [
+        "analyze_room_photos",
+        "track_requirements"
+      ],
+      "expected_agent_response": "Got it - north-facing hallway with oak floors, warm neutral vibe. Analyzed your photo, saw the current gray-green and oak tones.\n\nOne question: Any specific LRV range you're targeting? Want it lighter and airy (LRV 60+) or more medium-depth cozy (LRV 40-60)?\n\nGive me that and I'll search for your palette."
+    },
+    {
+      "turn_number": 2,
+      "user_content": "I'd prefer something lighter and airy, around LRV 60+. I want it to feel open and bright.",
+      "expected_agent_steps": [
+        "track_requirements",
+        "search_colors_smart"
+      ],
+      "expected_agent_response": "Perfect. Searched for: 'warm neutral for hallway with oak floors, LRV 60+'\n\nFound 45 total matches. Here are the top 10 results:\n\n1. Stony Ground No. 211 - LRV 65 - Hex #a9988a\n2. String No. 8 - LRV 68 - Hex #cfc8b8\n3. Jitney No. 293 - LRV 62 - Hex #b8a892\n4. Shaded White No. 201 - LRV 70 - Hex #e4dfd2\n5. Off-White No. 3 - LRV 72 - Hex #e8e3d6\n6. Pointing No. 2003 - LRV 64 - Hex #c4baa9\n7. Dimity No. 2008 - LRV 69 - Hex #e0d9cb\n8. Clunch No. 2009 - LRV 67 - Hex #d8d0bf\n9. Light Gray No. 17 - LRV 63 - Hex #c9c0b1\n10. Old White No. 4 - LRV 71 - Hex #e6e0d2\n\nNarrowing to 3 finalists:\n\n**String No. 8** - LRV 68, warm beige with subtle yellow undertones. Most compatible with your oak floors, creates that open airy feel.\n\n**Stony Ground No. 211** - LRV 65, slightly deeper with red undertones. More warmth, still bright enough for north light.\n\n**Shaded White No. 201** - LRV 70, softest option with neutral warmth. Maximum brightness while keeping warmth.\n\nMy recommendation: **String No. 8**. The warm beige undertones harmonize perfectly with oak flooring, and LRV 68 gives you that airy feel you want without washing out in north light. It's sophisticated without being bland."
+    }
+  ],
+  "criteria": {
+    "tool_trajectory_avg_score": 1.0,
+    "response_match_score": 0.75
+  }
+}
+

@@ -1,0 +1,93 @@
+# ============================================
+# SENSITIVE & CONFIDENTIAL INFORMATION
+# ============================================
+
+# Environment files (secrets)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+
+# API Keys and configuration files
+*api_key*
+*secret*
+*token*
+credentials.json
+config/secrets.json
+
+# Personal/Client room photos (HIGHLY SENSITIVE)
+data/samples/Room photos/
+data/samples/room_photos/
+**/Room photos/
+**/room_photos/
+client_photos/
+user_uploads/
+
+# Generated output schedules (may contain client info)
+data/samples/schedule.txt
+**/schedule.txt
+output/
+exports/
+
+# ============================================
+# PYTHON & DEVELOPMENT
+# ============================================
+
+# Virtual environments
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+build/
+dist/
+
+# ============================================
+# SYSTEM FILES
+# ============================================
+
+# macOS artifacts
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ============================================
+# AI/ML SPECIFIC
+# ============================================
+
+# Large model files
+*.pkl
+*.joblib
+*.h5
+models/
+checkpoints/
+
+# Training logs
+logs/
+wandb/
+
+# ============================================
+# TEMPORARY FILES
+# ============================================
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup

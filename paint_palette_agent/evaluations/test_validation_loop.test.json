@@ -1,0 +1,31 @@
+{
+  "test_name": "validation_loop_quality_control",
+  "description": "Validates that the multi-agent validation system catches and corrects technical errors in color recommendations, specifically undertone contradictions",
+  "agent_config": {
+    "agent_module": "color_flow_paint_agent"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "user_content": "I want to paint my living room. I have cool-toned marble countertops and stainless steel fixtures. Recommend a paint color that won't clash.",
+      "expected_agent_steps": [
+        "track_requirements",
+        "search_colors_smart"
+      ],
+      "expected_agent_response": "Searched for: 'paint colors that harmonize with cool marble and stainless steel'\n\nFound 38 total matches. Top 10 results:\n\n1. Pavilion Blue No. 252 - LRV 35 - Hex #6b9fb5\n2. Borrowed Light No. 235 - LRV 72 - Hex #dce4e3\n3. Pale Powder No. 204 - LRV 68 - Hex #d5d9d8\n4. Teresa's Green No. 236 - LRV 45 - Hex #8b9d8f\n5. Light Blue No. 22 - LRV 52 - Hex #99abb8\n6. Skylight No. 205 - LRV 70 - Hex #dce2e0\n7. Parma Gray No. 27 - LRV 42 - Hex #93a2a8\n8. Oval Room Blue No. 85 - LRV 38 - Hex #7b96a3\n9. Green Blue No. 84 - LRV 33 - Hex #6b8d93\n10. Stone Blue No. 86 - LRV 31 - Hex #627d85\n\nNarrowing to 3 finalists:\n\n**Borrowed Light No. 235** - LRV 72, soft blue-gray with cool undertones. Maximum harmony with your cool materials.\n\n**Pavilion Blue No. 252** - LRV 35, deeper blue with cool undertones. More dramatic but still coordinated.\n\n**Pale Powder No. 204** - LRV 68, pale gray with subtle cool undertones. Neutral option that won't fight.\n\nMy recommendation: **Borrowed Light No. 235**. The hex #dce4e3 shows blue undertones (B > R in RGB values) which harmonize perfectly with cool marble and stainless steel. At LRV 72 it keeps the space bright and airy while maintaining that sophisticated cool-toned cohesion you need.\n\nThe validation loop ensures undertone claims match actual hex codes - no warm/cool contradictions."
+    }
+  ],
+  "criteria": {
+    "tool_trajectory_avg_score": 1.0,
+    "response_match_score": 0.75,
+    "rubric_based_final_response_quality_v1": {
+      "rubrics": [
+        "Agent correctly identifies cool undertones based on hex code analysis (B > R in RGB)",
+        "Agent does not claim warm undertones for cool colors or vice versa",
+        "Agent explains undertone harmony with existing materials",
+        "Response demonstrates technical accuracy in color theory"
+      ]
+    }
+  }
+}
+

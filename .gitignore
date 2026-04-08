@@ -1,0 +1,264 @@
+# ============================================
+# SENSITIVE & CONFIDENTIAL INFORMATION
+# ============================================
+
+# Environment variables and API keys
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+*.env
+
+# API Keys and Secrets
+*api_key*
+*secret*
+*token*
+*password*
+config/secrets.json
+secrets.yaml
+credentials.json
+service-account*.json
+
+# Personal/Client Data
+paint_palette_agent/data/samples/Room photos/
+**/Room photos/
+**/room_photos/
+client_photos/
+personal_photos/
+user_uploads/
+
+# Eval sets with embedded image data — only commit stripped versions.
+# Use *.with_images.json for local-only copies that contain inline base64.
+*.with_images.json
+*_local.evalset.json
+
+# Sample images and swatches (personal/testing data)
+paint_palette_agent/data/samples/Inspiration/
+paint_palette_agent/data/samples/Swatches/
+paint_palette_agent/data/samples/Step*.jpg
+paint_palette_agent/data/samples/Step*.png
+**/Inspiration/
+**/Swatches/
+
+# Generated output files that might contain personal info
+paint_palette_agent/data/samples/schedule.txt
+**/schedule.txt
+**/output/
+**/exports/
+
+# Large evaluation result files (keep small test results for portfolio)
+paint_palette_agent/.adk/eval_history/*.evalset_result.json
+# Note: You can manually commit specific small eval results if needed for portfolio
+
+# Browser automation - profiles, sessions, and recordings
+paint_palette_agent/browser_automation/fb_browser_profile/
+paint_palette_agent/browser_automation/logs/
+**/browser_profile/
+**/logs/videos/
+
+# ============================================
+# PYTHON & DEVELOPMENT
+# ============================================
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.virtualenv/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# ============================================
+# SYSTEM & IDE FILES
+# ============================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.metadata
+.buildpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# ============================================
+# AI/ML SPECIFIC
+# ============================================
+
+# Model files (often large and sensitive)
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.pb
+*.onnx
+*.tflite
+models/
+checkpoints/
+weights/
+
+# Large datasets
+data/raw/
+data/processed/
+datasets/
+*.csv.gz
+*.parquet
+*.feather
+
+# Training logs
+logs/
+tensorboard/
+wandb/
+mlruns/
+
+# ============================================
+# WEB & DEPLOYMENT
+# ============================================
+
+# Node modules (if any frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Deployment configs
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# ============================================
+# TEMPORARY & GENERATED FILES
+# ============================================
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Generated diagrams (keep source, ignore generated)
+architectural_diagram.png
+
+# Architecture documentation files (local reference only)
+Lovely_Interiors_Architecture.jpg
+Lovely_Interiors_Architecture.pdf
+
+# Backup files
+*.bak
+*.backup
+*~
+*.orig
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z 
